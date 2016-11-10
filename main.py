@@ -32,5 +32,15 @@ def calculate():
                                    root_1=root_1, root_2=root_2)
     return render_template('calculator_form.html')
 
+@app.route('/power/', methods=['GET', 'POST'])
+def power():
+    if request.method == 'POST':
+        a = float(request.form['a'])
+        b = float(request.form['b'])
+        ans = pow(a,b)
+        if ans:
+            return render_template('power_result.html', a=a, b=b, x = ans)
+    return render_template('power_form.html')
+
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080)
